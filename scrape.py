@@ -50,6 +50,11 @@ def run_scraper():
 
                 for rider in offer["outcomes"]:
                     rider_name = rider["label"]
+
+                    if "odds" not in rider:
+                        print(f"Skipping {rider_name} (No odds available)")
+                        continue
+
                     real_odds = rider["odds"] / 1000.0
 
                     # Hardcoded 'GC_WINNER' and None for stage_number
